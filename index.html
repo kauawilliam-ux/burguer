@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Old Burguer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="app">
+
+    <img src="images/computador.png" alt="Layout Desktop" class="bg-desktop">
+    <img src="images/celular.png" alt="Layout Mobile" class="bg-mobile">
+
+    <section class="conteudo">
+
+      <div class="produto">
+        <h3>Clássico da Casa</h3>
+        <p class="valor">R$ 34,00</p>
+        <div class="controles">
+          <button onclick="alterarQtd(0, -1)">−</button>
+          <span id="qtd0">0</span>
+          <button onclick="alterarQtd(0, 1)">+</button>
+        </div>
+      </div>
+
+      <div class="produto">
+        <h3>Egg Burger</h3>
+        <p class="valor">R$ 35,00</p>
+        <div class="controles">
+          <button onclick="alterarQtd(1, -1)">−</button>
+          <span id="qtd1">0</span>
+          <button onclick="alterarQtd(1, 1)">+</button>
+        </div>
+      </div>
+
+      <div class="produto">
+        <h3>Smash Tradicional</h3>
+        <p class="valor">R$ 37,00</p>
+        <div class="controles">
+          <button onclick="alterarQtd(2, -1)">−</button>
+          <span id="qtd2">0</span>
+          <button onclick="alterarQtd(2, 1)">+</button>
+        </div>
+      </div>
+
+      <div class="rodape">
+        <div class="cupom-area">
+          <input type="text" id="cupom-input" placeholder="Cupom de desconto">
+          <button onclick="aplicarCupom()">Aplicar</button>
+        </div>
+
+        <button class="btn-pedido" onclick="abrirModal()">Pedido</button>
+        <p id="total">Total: R$ 0,00</p>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- MODAL -->
+  <div id="modal-checkout" class="modal-overlay hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Finalizar Pedido</h2>
+        <button class="btn-fechar" onclick="fecharModal()">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div id="resumo-carrinho" class="resumo-lista"></div>
+
+        <div class="total-final">
+          Total: <span id="total-modal">R$ 0,00</span>
+        </div>
+
+        <form id="form-checkout" onsubmit="enviarPedidoWhatsApp(event)">
+
+          <div class="campo-form">
+            <label>Seu Nome:</label>
+            <input type="text" id="cliente-nome" required>
+          </div>
+
+          <div class="campo-form">
+            <label>Endereço:</label>
+            <input type="text" id="cliente-endereco" required>
+          </div>
+
+          <div class="campo-form">
+            <label>Pagamento:</label>
+            <select id="cliente-pagamento">
+              <option>Pix</option>
+              <option>Dinheiro</option>
+              <option>Cartão de Crédito</option>
+              <option>Cartão de Débito</option>
+            </select>
+          </div>
+
+          <div class="campo-form">
+            <label>Observações do pedido:</label>
+            <textarea id="cliente-observacoes" rows="3"
+              placeholder="Ex: sem cebola, carne ao ponto, entregar no portão..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-confirmar">
+            CONFIRMAR PEDIDO (WhatsApp)
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ RODAPÉ RESTAURADO -->
+  <footer class="footer-site">
+    <div class="footer-container">
+
+      <div class="footer-bloco">
+        <h4>Old Burguer 🍔</h4>
+        <p>Hambúrguer artesanal na chapa</p>
+        <p>Sabor clássico de verdade</p>
+      </div>
+
+      <div class="footer-bloco">
+        <h4>Endereço</h4>
+        <p>Rua Exemplo, 123</p>
+        <p>Centro — Sua Cidade</p>
+      </div>
+
+      <div class="footer-bloco">
+        <h4>Funcionamento</h4>
+        <p>Seg a Sex: 18h às 23h</p>
+        <p>Sáb e Dom: 18h às 00h</p>
+      </div>
+
+      <div class="footer-bloco">
+        <h4>Contato</h4>
+        <p>WhatsApp: (11) 99999-9999</p>
+        <p>Instagram: @oldburguer</p>
+      </div>
+
+    </div>
+
+    <div class="footer-copy">
+      © 2026 Old Burguer — Todos os direitos reservados
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
